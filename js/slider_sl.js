@@ -23,15 +23,14 @@ function myFunction() {
         for (var i = 0; i < elem.length; i++) {
             item_sl = document.createElement("div");
             item_sl.className = "item-slider";
-            item_sl.style.maxWidth = elem_sl/count_sl;
-            item_sl.setAttribute('item_sl-id', i+'');
+            item_sl.style.maxWidth = elem_sl / count_sl;
+            item_sl.setAttribute('item_sl-id', i + '');
 
             item_clone[i] = item_sl;
-            con.appendChild(item_clone[i]);
-            //item_clone[i].appendChild(elem[i]);
+            // con.appendChild(item_clone[i]);
+            // item_clone[i].appendChild(elem[i]);
+            console.log(elem[i]);
         }
-        console.log(elem);
-
 
 
         /*for (var i = 0; i < elements.length; i) {
@@ -170,8 +169,8 @@ function myFunction() {
 
     if (sl_inst !== null && elements.length !== 0) {
         resize();
-        slide_constructor();
         container();
+        slide_constructor();
         controls();
         pagination();
     }
