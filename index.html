@@ -1,82 +1,90 @@
-<html>
-    <title>slider_sl</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Constructor Slider</title>
     <link rel="stylesheet" href="css/main.css">
-    <!--<div class="wrapper" id = "slider_test">-->
-        <!--<input type="radio" name="point" id="slide1" checked>-->
-        <!--<input type="radio" name="point" id="slide2">-->
-        <!--<input type="radio" name="point" id="slide3">-->
-        <!--<input type="radio" name="point" id="slide4">-->
-        <!--<input type="radio" name="point" id="slide5">-->
-        <!--<div class="slider">-->
-        <!--<div class="slides slide1"></div>-->
-        <!--<div class="slides slide2"></div>-->
-        <!--<div class="slides slide3"></div>-->
-        <!--<div class="slides slide4"></div>-->
-        <!--<div class="slides slide5"></div>-->
-        <!--</div>-->
-        <!--<div class="controls">-->
-        <!--<label for="slide1"></label>-->
-        <!--<label for="slide2"></label>-->
-        <!--<label for="slide3"></label>-->
-        <!--<label for="slide4"></label>-->
-        <!--<label for="slide5"></label>-->
-        <!--</div>-->
-    <!--</div>-->
-    <div class="myslider wrapper">
-        <div class="slides slide1"><img src="http://habrastorage.org/files/3f2/628/bd5/3f2628bd58c8452db516195cb0c9bfc9.jpg" alt=""></div>
-        <div class="slides slide2"><img src="http://habrastorage.org/files/3e1/95d/c7f/3e195dc7f5a64469807f49a14f97ba0e.jpg" alt=""></div>
-        <div class="slides slide3"><img src="http://habrastorage.org/files/663/6b1/d4f/6636b1d4f8e643d29eab8c192fc1cea3.jpg" alt=""></div>
-        <div class="slides slide4"><img src="http://habrastorage.org/files/e59/424/c04/e59424c046be4dab897d84ab015c87ea.jpg" alt=""></div>
-        <div class="slides slide5"><img src="http://habrastorage.org/files/53c/ff6/c1c/53cff6c1caf842368c70b8ef892d8402.jpg" alt=""></div>
-        <div class="slides slide4"><img src="http://habrastorage.org/files/e59/424/c04/e59424c046be4dab897d84ab015c87ea.jpg" alt=""></div>
-        <div class="slides slide5"><img src="http://habrastorage.org/files/53c/ff6/c1c/53cff6c1caf842368c70b8ef892d8402.jpg" alt=""></div>
-
+</head>
+<body>
+<div class="wrapper">
+    <div class="myslider">
+        <div class="item"><img src="img/3f2628bd58c8452db516195cb0c9bfc9.jpg" alt=""></div>
+        <div class="item"><img src="img/3e195dc7f5a64469807f49a14f97ba0e.jpg" alt=""></div>
+        <div class="item"><img src="img/6636b1d4f8e643d29eab8c192fc1cea3.jpg" alt=""></div>
+        <div class="item"><img src="img/e59424c046be4dab897d84ab015c87ea.jpg" alt=""></div>
+        <div class="item"><img src="img/53cff6c1caf842368c70b8ef892d8402.jpg" alt=""></div>
+        <div class="item"><img src="img/e59424c046be4dab897d84ab015c87ea.jpg" alt=""></div>
+        <div class="item"><img src="img/53cff6c1caf842368c70b8ef892d8402.jpg" alt=""></div>
     </div>
+</div>
 
-    <!--<style>-->
-        <!--#test .slides {-->
-            <!--position: relative;-->
-            <!--width: 20px;-->
-            <!--height: 20px;-->
-        <!--}-->
+    <script type = "text/javascript" src="js/slider_sl.js"></script>
+    <script>
+        slider('.myslider',
+            {
+                quantity: 1,
+                nav : true,
+                loop : true
+            });
+    </script>
 
-        <!--#test1:checked ~ #test .slides:nth-child(1)::before,-->
-        <!--#test2:checked ~ #test .slides:nth-child(2)::before,-->
-        <!--#test3:checked ~ #test .slides:nth-child(3)::before,-->
-        <!--#test4:checked ~ #test .slides:nth-child(4)::before,-->
-        <!--#test5:checked ~ #test .slides:nth-child(5)::before{-->
-            <!--content: '';-->
-            <!--position: absolute;-->
-            <!--top: 0;-->
-            <!--bottom: 0;-->
-            <!--right: 0;-->
-            <!--left: 0;-->
-            <!--background-color: #17fff7;-->
-        <!--}-->
-    <!--</style>-->
-    <!--<input type="radio" name="test" id="test1">-->
-    <!--<input type="radio" name="test" id="test2">-->
-    <!--<input type="radio" name="test" id="test3">-->
-    <!--<input type="radio" name="test" id="test4">-->
-    <!--<input type="radio" name="test" id="test5">-->
-    <!--<div id = "test">-->
-        <!--<div class="slides"></div>-->
-        <!--<div class="slides"></div>-->
-        <!--<div class="slides"></div>-->
-        <!--<div class="slides"></div>-->
-        <!--<div class="slides"></div>-->
-        <!--<div class="slides"></div>-->
+    <!--<div class="wrapper" id = "slider_test">-->
+    <!--<input type="radio" name="point" id="slide1" checked>-->
+    <!--<input type="radio" name="point" id="slide2">-->
+    <!--<input type="radio" name="point" id="slide3">-->
+    <!--<input type="radio" name="point" id="slide4">-->
+    <!--<input type="radio" name="point" id="slide5">-->
+    <!--<div class="slider">-->
+    <!--<div class="slides slide1"></div>-->
+    <!--<div class="slides slide2"></div>-->
+    <!--<div class="slides slide3"></div>-->
+    <!--<div class="slides slide4"></div>-->
+    <!--<div class="slides slide5"></div>-->
     <!--</div>-->
+    <!--<div class="controls">-->
+    <!--<label for="slide1"></label>-->
+    <!--<label for="slide2"></label>-->
+    <!--<label for="slide3"></label>-->
+    <!--<label for="slide4"></label>-->
+    <!--<label for="slide5"></label>-->
+    <!--</div>-->
+    <!--</div>-->
+<!--<style>-->
+    <!--#test .slides {-->
+        <!--position: relative;-->
+        <!--width: 20px;-->
+        <!--height: 20px;-->
+    <!--}-->
 
+    <!--#test1:checked ~ #test .slides:nth-child(1)::before,-->
+    <!--#test2:checked ~ #test .slides:nth-child(2)::before,-->
+    <!--#test3:checked ~ #test .slides:nth-child(3)::before,-->
+    <!--#test4:checked ~ #test .slides:nth-child(4)::before,-->
+    <!--#test5:checked ~ #test .slides:nth-child(5)::before{-->
+        <!--content: '';-->
+        <!--position: absolute;-->
+        <!--top: 0;-->
+        <!--bottom: 0;-->
+        <!--right: 0;-->
+        <!--left: 0;-->
+        <!--background-color: #17fff7;-->
+    <!--}-->
+<!--</style>-->
+<!--<input type="radio" name="test" id="test1">-->
+<!--<input type="radio" name="test" id="test2">-->
+<!--<input type="radio" name="test" id="test3">-->
+<!--<input type="radio" name="test" id="test4">-->
+<!--<input type="radio" name="test" id="test5">-->
+<!--<div id = "test">-->
+    <!--<div class="slides"></div>-->
+    <!--<div class="slides"></div>-->
+    <!--<div class="slides"></div>-->
+    <!--<div class="slides"></div>-->
+    <!--<div class="slides"></div>-->
+    <!--<div class="slides"></div>-->
+<!--</div>-->
+</body>
 </html>
-
-<script type = "text/javascript" src="js/slider_sl.js"></script>
-<script>
-    slider('.myslider', 
-    {
-        count: 1,
-        dot : true,
-        loop : true 
-    });
-</script>
