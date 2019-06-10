@@ -11,7 +11,7 @@ slider = (function(box, options){
     };
 
     // Кол-во выводимых элементов на экран
-    let quantity = typeof(options.quantity) == "number" ? options.quantity : 1;
+    let quantity = typeof(options.quantity) == "number" && options.quantity > 0 ? options.quantity : 1;
 
     // Настройки для елементов
     let elementsOptions = {
@@ -30,6 +30,7 @@ slider = (function(box, options){
         dotActive : "active"
     };
 
+    // Настройки для навигации
     let navOptions = {
         Container : "control",
         Active : options.nav ? options.nav : false,
@@ -88,15 +89,20 @@ slider = (function(box, options){
         control.appendChild(prev);
         control.appendChild(next);
         elementSelect(list, quantity, elementsOptions.Active, 0, quantity);
-        elemCount = elemCount - 1;
             next.addEventListener('click', function (ev) {
-                if (elemCount <= step && navOptions.loop === false) {
+                if (elemCount-quantity <= step && navOptions.loop === false) {
                     return false;
                 } else {
                     step = nextCount(list, elemCount, step);
                 }
             });
-        // prev.onclick = prevCount;
+            prev.addEventListener('click', function (ev) {
+                if (step == 0 && navOptions.loop === false) {
+                    return false;
+                } else {
+                    step = prevCount(list, elemCount, step);
+                }
+            });
         block.Container.insertBefore(control, list);
     }
 
@@ -105,7 +111,7 @@ slider = (function(box, options){
         let quantityItems = quantity;
         step += quantity;
         quantityItems += step;
-        if (elemCount < step || (quantity === 1 && elemCount < step)) {
+        if (elemCount <= step || (quantity === 1 && elemCount < step)) {
             step = 0;
             quantityItems = quantity;
             list.style.transform = "translateX(0px)";
@@ -113,25 +119,27 @@ slider = (function(box, options){
         if (elemCount >= step) {
             widthStep = list.children[step].offsetWidth*step;
             list.style.transform = "translateX(-"+widthStep+"px)";
-            console.debug(step,'-',elemCount);
         }
-        elementSelect(list, quantityItems, elementsOptions.Active, step, elemCount+1);
+        elementSelect(list, quantityItems, elementsOptions.Active, step, elemCount);
+        return step;
+    }
 
-        // list.style.transform = "translateX(-"+widthStep+"px)";
-        // if (elemCount <= s){
-        //     elementSelect(quantity, '', s);
-        //     s = quantity;
-        //     elem = 0;
-        //     elementSelect(quantity, elementsOptions.Active, s);
-        //     block.Container.style.transform = "translateX(0px)";
-        // }
-        // else if (elemCount >= s) {
-        //     elementSelect(quantity, '', s);
-        //     s += quantity;
-        //     elementSelect(quantity, elementsOptions.Active, s);
-        //     elem = block.Width*s;
-        //     block.Container.style.transform = "translateX(-"+elem+"px)";
-        // }
+
+    function prevCount(list, elemCount, step) {
+        let widthStep = 0;
+        let quantityItems = quantity;
+        step -= quantity;
+        quantityItems += step;
+        if (step < 0) {
+            step = elemCount - quantity;
+            quantityItems = step + quantity;
+            widthStep = list.children[step].offsetWidth*step;
+            list.style.transform = "translateX(-"+widthStep+"px)";
+        }
+        widthStep = list.children[step].offsetWidth*step;
+        list.style.transform = "translateX(-"+widthStep+"px)";
+
+        elementSelect(list, quantityItems, elementsOptions.Active, step, elemCount);
         return step;
     }
 
@@ -155,6 +163,7 @@ slider = (function(box, options){
     // }
     
     function elementSelect(list, quantityItems, active, step, count) {
+        console.log(step,'-',count,'-', quantityItems);
         for (let i = 0; i < count; i++) list.children[i].className = block.Class + "__" + elementsOptions.Class;
         for (let i = step; i < count; i++) {
             if (i < quantityItems) {
