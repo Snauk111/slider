@@ -121,6 +121,7 @@ slider = (function(box, options){
             list.style.transform = "translateX(-"+widthStep+"px)";
         }
         elementSelect(list, quantityItems, elementsOptions.Active, step, elemCount);
+        console.log(step);
         return step;
     }
 
