@@ -120,7 +120,7 @@ slider = (function(box, options){
             widthStep = list.children[step].offsetWidth*step;
             list.style.transform = "translateX(-"+widthStep+"px)";
         }
-        elementSelect(list, quantityItems, elementsOptions.Active, step, elemCount);        
+        elementSelect(list, quantityItems, elementsOptions.Active, step, elemCount);
         return step;
     }
 
@@ -172,6 +172,14 @@ slider = (function(box, options){
             }
 
         }
+    }
+
+    if (nodeContainer) {
+        elementsInit();
+        container();
+        if (navOptions.Active === true) controlInit();
+    } else {
+        return false;
     }
 
     if (nodeContainer) {
