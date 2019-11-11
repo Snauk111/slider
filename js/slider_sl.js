@@ -120,8 +120,7 @@ slider = (function(box, options){
             widthStep = list.children[step].offsetWidth*step;
             list.style.transform = "translateX(-"+widthStep+"px)";
         }
-        elementSelect(list, quantityItems, elementsOptions.Active, step, elemCount);
-        console.log(step);
+        elementSelect(list, quantityItems, elementsOptions.Active, step, elemCount);        
         return step;
     }
 
